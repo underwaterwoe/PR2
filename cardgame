@@ -1,0 +1,45 @@
+import random
+
+DECK = ["CARD1", "CARD2", "CARD3",
+        "CARD4", "CARD5", "CARD6",
+        "CARD7", "CARD8", "CARD9"]
+DECK_colors = ["Red", "Blue"]
+
+
+class Deck:
+    def __init__(self, cards, card_colors):
+        self.cards = cards
+        self.card_colors = card_colors
+
+    def draw_random_card(self):
+        return random.choice(self.card_colors) + " " + random.choice(self.cards)
+
+
+card_game = Deck(DECK, DECK_colors)
+
+while True:
+    choice1 = card_game.draw_random_card()
+    choice2 = card_game.draw_random_card()
+    choice3 = card_game.draw_random_card()
+    mystery_cards = [choice1, choice2, choice3]
+    myst_card = random.choice(mystery_cards)
+    print("____________________________")
+    print("Guess which card was picked: ")
+    print(f"Choice 1: {choice1} \nChoice 2: {choice2} \nChoice 3: {choice3}")
+
+    used_cards = []
+    used_cards.append(choice1)
+    used_cards.append(choice2)
+    used_cards.append(choice3)
+
+    guess = input("Your guess: ")
+    print("__________________________")
+    if guess == "1" and choice1 == myst_card:
+        print("ONE POINT EARNED")
+    elif guess == "2" and choice2 == myst_card:
+        print("ONE POINT EARNED")
+    elif guess == "3" and choice3 == myst_card:
+        print("ONE POINT EARNED")
+    else:
+        print("WRONG!")
+
